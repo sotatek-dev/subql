@@ -122,6 +122,17 @@ export default class Init extends Command {
     if (templates.length === 0) {
       useCustomTemplate = true;
     }
+    const solanaTemplate = [
+      {
+        name: 'subql-solana-starter',
+        description: 'Starter Solana project for subquery',
+        remote: 'https://github.com/subquery/subql-starter/',
+        branch: 'v0.2.0',
+        network: 'Solana',
+        specVersion: '0.2.0',
+      },
+    ];
+    templates = solanaTemplate;
 
     if (!useCustomTemplate) {
       const networks = uniq(templates.map(({network}) => network)).sort();
