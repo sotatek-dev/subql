@@ -126,8 +126,8 @@ export default class Init extends Command {
       {
         name: 'subql-solana-starter',
         description: 'Starter Solana project for subquery',
-        remote: 'https://github.com/subquery/subql-starter/',
-        branch: 'v0.2.0',
+        remote: 'https://github.com/SotaTek-ThinhPhung/solana-subql-starter',
+        branch: 'custom',
         network: 'Solana',
         specVersion: '0.2.0',
       },
