@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 import { Inject, Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
-import { Connection } from '@solana/web3.js';
+import { Connection, TransactionResponse } from '@solana/web3.js';
 import { getAllEntitiesRelations } from '@subql/common';
 import {
   SubqlSolanaCustomDatasource,
@@ -23,6 +23,7 @@ import { SubquerySolanaProject } from '../configure/project.model';
 import { SubqueryModel, SubqueryRepo } from '../entities';
 import { getLogger } from '../utils/logger';
 import { profiler } from '../utils/profiler';
+import { filterTransaction } from '../utils/solana-helper';
 import { getYargsOption } from '../yargs';
 import { ApiService } from './api.service';
 import { DsProcessorService } from './ds-processor.service';
@@ -360,11 +361,17 @@ export class IndexerSolanaManager {
         case SubqlSolanaHandlerKind.Block:
           await vm.securedExec(handler.handler, [solanaBlock]);
           break;
-        case SubqlSolanaHandlerKind.Transaction:
-          for (const tx of block.block.transactions) {
+        case SubqlSolanaHandlerKind.Transaction: {
+          const filteredTransactions = filterTransaction(
+            block.block.transactions as TransactionResponse[],
+            handler.filter,
+          );
+          for (const tx of filteredTransactions) {
+            tx.slot = block.block.parentSlot + 1;
             await vm.securedExec(handler.handler, [tx]);
           }
           break;
+        }
         default:
       }
     }
