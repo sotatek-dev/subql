@@ -352,14 +352,10 @@ export class IndexerSolanaManager {
     handlers: SubqlSolanaRuntimeHandler[],
     { block }: BlockContent,
   ): Promise<void> {
-    const solanaBlock: SolanaBlock = {
-      block: block as any,
-    };
-
     for (const handler of handlers) {
       switch (handler.kind) {
         case SubqlSolanaHandlerKind.Block:
-          await vm.securedExec(handler.handler, [solanaBlock]);
+          await vm.securedExec(handler.handler, [block]);
           break;
         case SubqlSolanaHandlerKind.Transaction: {
           const filteredTransactions = filterTransaction(
