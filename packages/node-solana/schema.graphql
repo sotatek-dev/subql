@@ -4,7 +4,8 @@ type Block @entity {
 }
 
 type Transaction @entity {
-  id: ID! #id is a required field
+  id: ID!
+
   block_hash: String
 
   block_height: BigInt
@@ -13,7 +14,7 @@ type Transaction @entity {
 
   signature: String
 
-  log_messages: [String]
+  programId: [String]
 
   status: String
 }
