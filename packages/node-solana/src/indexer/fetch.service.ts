@@ -83,6 +83,22 @@ export class FetchService implements OnApplicationShutdown {
           return [];
         }
         switch (baseHandlerKind) {
+          case SubqlSolanaHandlerKind.Transaction: {
+            if (handler.filter && Object.keys(handler.filter).length > 0) {
+              const conditions = [];
+              for (const field in handler.filter) {
+                conditions.push({
+                  field,
+                  value: handler.filter[field],
+                });
+              }
+              queryEntries.push({
+                entity: 'transactions',
+                conditions,
+              });
+            }
+            break;
+          }
           default:
         }
       }

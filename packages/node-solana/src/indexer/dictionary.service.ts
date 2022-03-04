@@ -92,7 +92,7 @@ function buildDictQueryFragment(
     project: [
       {
         entity: 'nodes',
-        project: ['blockHeight'],
+        project: ['slot blockHeight'],
       },
     ],
     args: {
@@ -157,10 +157,16 @@ export class DictionaryService implements OnApplicationShutdown {
     );
 
     try {
-      const resp = await this.client.query({
-        query: gql(query),
-        variables,
-      });
+      const resp = await this.client
+        .query({
+          query: gql(query),
+          variables,
+        })
+        .catch((err) => {
+          // console.log(`=====`, err.networkError.result.errors)
+          logger.warn(err, `failed to query dictionary`);
+          return undefined;
+        });
       const blockHeightSet = new Set<number>();
       //const specVersionBlockHeightSet = new Set<number>();
       const entityEndBlock: { [entity: string]: number } = {};
@@ -221,7 +227,7 @@ export class DictionaryService implements OnApplicationShutdown {
     const nodes: GqlNode[] = [
       {
         entity: '_metadata',
-        project: ['lastProcessedHeight', 'chainId'],
+        project: ['lastProcessedHeight', 'targetHeight'],
       },
       //{
       //  entity: 'specVersions',
