@@ -203,6 +203,7 @@ export class FetchService implements OnApplicationShutdown {
         await delay(1);
         continue;
       }
+      //the dictionary is used when the .yaml file has 'dictionary' & 'filter'
       if (this.useDictionary) {
         const queryEndBlock = startBlockHeight + DICTIONARY_MAX_QUERY_SIZE;
         try {

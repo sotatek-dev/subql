@@ -6,9 +6,9 @@ type Block @entity {
 type Transaction @entity {
   id: ID!
 
-  block_hash: String
+  blockHash: String
 
-  block_height: BigInt
+  blockHeight: BigInt
 
   slot: BigInt
 

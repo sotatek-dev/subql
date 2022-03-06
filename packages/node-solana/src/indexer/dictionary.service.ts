@@ -43,7 +43,7 @@ export interface DictionaryQueryEntry {
 function extractVar(name: string, cond: DictionaryQueryCondition): GqlVar {
   return {
     name,
-    gqlType: 'String!',
+    gqlType: cond.field === 'programId' ? 'JSON' : 'String!',
     value: cond.value,
   };
 }
@@ -65,15 +65,24 @@ function extractVars(
         and: i.map((j, innerIdx) => {
           const v = extractVar(`${entity}_${outerIdx}_${innerIdx}`, j);
           gqlVars.push(v);
+          if (j.field === 'programId') {
+            return { [sanitizeArgField(j.field)]: { contains: `$${v.name}` } };
+          }
           return { [sanitizeArgField(j.field)]: { equalTo: `$${v.name}` } };
         }),
       };
     } else if (i.length === 1) {
       const v = extractVar(`${entity}_${outerIdx}_0`, i[0]);
       gqlVars.push(v);
-      filter.or[outerIdx] = {
-        [sanitizeArgField(i[0].field)]: { equalTo: `$${v.name}` },
-      };
+      if (i[0].field === 'programId') {
+        filter.or[outerIdx] = {
+          [sanitizeArgField(i[0].field)]: { contains: `$${v.name}` },
+        };
+      } else {
+        filter.or[outerIdx] = {
+          [sanitizeArgField(i[0].field)]: { equalTo: `$${v.name}` },
+        };
+      }
     }
   });
   return [gqlVars, filter];
