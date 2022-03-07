@@ -23,7 +23,7 @@ export declare type TerraMetaData = {
     indexerNodeVersion: string;
     queryNodeVersion: string;
 };
-export declare type TerraMetaData = {
+export declare type SolanaMetaData = {
     lastProcessedHeight: number;
     lastProcessedTimestamp: number;
     targetHeight: number;

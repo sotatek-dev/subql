@@ -7,7 +7,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setJsonObjectType = exports.getAllEntitiesRelations = exports.getAllEnums = exports.getAllJsonObjects = void 0;
 const assert_1 = __importDefault(require("assert"));
-const common_1 = require("..");
+const common_1 = require("@subql/common");
 const graphql_1 = require("graphql");
 const constant_1 = require("./constant");
 const schema_1 = require("./schema");

@@ -1,7 +1,7 @@
 // Copyright 2020-2021 OnFinality Limited authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import {BlockResponse, TransactionResponse} from '@solana/web3.js';
+import {BlockResponse} from '@solana/web3.js';
 
 export interface Entity {
   id: string;
@@ -16,6 +16,7 @@ export interface Store {
   getByField(entity: string, field: string, value): Promise<Entity[]>;
   getOneByField(entity: string, field: string, value): Promise<Entity | null>;
   set(entity: string, id: string, data: Entity): Promise<void>;
+  bulkCreate(entity: string, data: Entity[]): Promise<void>;
   remove(entity: string, id: string): Promise<void>;
 }
 
