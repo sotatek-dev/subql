@@ -1,4 +1,4 @@
-type StarterEntity @entity {
+type Block @entity {
   id: ID! #id is a required field
   signature: String!
 
@@ -26,4 +26,6 @@ type Transaction @entity {
   programId: [String!]
 
   status: String!
+
+  slot: BigInt!
 }
