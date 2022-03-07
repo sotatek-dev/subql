@@ -362,10 +362,10 @@ export class IndexerSolanaManager {
             block.block.transactions as TransactionResponse[],
             handler.filter,
           );
+          const { blockHeight, parentSlot }: any = block.block;
           for (const tx of filteredTransactions as any) {
-            const blockData: any = block.block;
-            tx.blockHeight = blockData.blockHeight;
-            tx.slot = blockData.parentSlot + 1;
+            tx.blockHeight = blockHeight;
+            tx.slot = parentSlot + 1;
             await vm.securedExec(handler.handler, [tx]);
           }
           break;
