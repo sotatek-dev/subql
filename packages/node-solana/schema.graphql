@@ -1,23 +1,13 @@
 type Block @entity {
   id: ID! #id is a required field
-  signature: String!
-
-  blockHash: String!
-
-  blockNumber: BigInt!
-
-  blockHeigh: Int!
-
-  programId: [String!]
-
-  status: String! #filed2 is an optional field
+  slot: Int!
 }
 
 type Transaction @entity {
   id: ID! #id is a required field
   blockHash: String!
 
-  blockHeigh: Int!
+  blockHeight: Int!
 
   slot: BigInt!
 
@@ -26,6 +16,4 @@ type Transaction @entity {
   programId: [String!]
 
   status: String!
-
-  slot: BigInt!
 }

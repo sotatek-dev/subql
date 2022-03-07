@@ -71,11 +71,9 @@ export function filterTransaction(
     filtersArray.find(
       (filter) =>
         (filter.programId
-          ? meta.logMessages.find((msg) =>
+          ? !!meta.logMessages.find((msg) =>
               msg.match(new RegExp(filter.programId)),
             )
-            ? true
-            : false
           : true) &&
         (filter.status
           ? Object.prototype.hasOwnProperty.call(meta.status, filter.status)
