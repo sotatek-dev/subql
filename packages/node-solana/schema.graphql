@@ -7,7 +7,7 @@ type Transaction @entity {
   id: ID! #id is a required field
   blockHash: String!
 
-  blockHeigh: Int!
+  blockHeight: Int!
 
   slot: BigInt!
 
