@@ -4768,27 +4768,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@subql/common-solana@workspace:packages/common-solana":
-  version: 0.0.0-use.local
-  resolution: "@subql/common-solana@workspace:packages/common-solana"
-  dependencies:
-    "@subql/types-solana": "workspace:*"
-    "@types/bn.js": 4.11.6
-    "@types/js-yaml": ^4.0.4
-    "@types/pino": ^6.3.12
-    bn.js: 4.11.6
-    class-transformer: 0.4.0
-    class-validator: ^0.13.1
-    flatted: ^3.2.2
-    graphql: ^15.7.2
-    graphql-tag: ^2.12.5
-    js-yaml: ^4.1.0
-    pino: ^6.13.3
-    reflect-metadata: ^0.1.13
-    sequelize: ^6.6.2
-  languageName: unknown
-  linkType: soft
-
 "@subql/common@workspace:*, @subql/common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "@subql/common@workspace:packages/common"
@@ -4833,7 +4812,57 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@subql/node-solana@workspace:packages/node-solana":
+"@subql/node-terra@workspace:packages/node-terra":
+  version: 0.0.0-use.local
+  resolution: "@subql/node-terra@workspace:packages/node-terra"
+  dependencies:
+    "@apollo/client": 3.4.16
+    "@nestjs/common": ^8.1.2
+    "@nestjs/core": ^8.1.2
+    "@nestjs/event-emitter": ^1.0.0
+    "@nestjs/platform-express": ^8.1.2
+    "@nestjs/schedule": ^1.0.1
+    "@nestjs/schematics": ^8.0.4
+    "@nestjs/testing": ^8.1.2
+    "@polkadot/util-crypto": ^8.4.1
+    "@subql/common": "workspace:*"
+    "@subql/common-terra": "workspace:*"
+    "@subql/types-terra": "workspace:*"
+    "@subql/x-merkle-mountain-range": 2.0.0-0.1.1
+    "@subql/x-vm2": ^3.9.3-0.1.0
+    "@terra-money/terra.js": ^3.0.1
+    "@types/app-module-path": ^2.2.0
+    "@types/express": ^4.17.13
+    "@types/jest": ^27.0.2
+    "@types/lodash": ^4.14.176
+    "@types/supertest": ^2.0.11
+    "@types/tar": ^6.1.0
+    "@types/yargs": ^16.0.4
+    "@willsoto/nestjs-prometheus": ^4.2.0
+    app-module-path: ^2.2.0
+    dayjs: ^1.10.7
+    dotenv: ^10.0.0
+    eventemitter2: ^6.4.5
+    lodash: ^4.17.21
+    merkle-tools: ^1.4.1
+    nodemon: ^2.0.14
+    parse-json: ^5.2.0
+    pg: ^8.7.1
+    prom-client: ^14.0.0
+    reflect-metadata: ^0.1.13
+    rimraf: ^3.0.2
+    rxjs: ^7.4.0
+    sequelize: ^6.15.0
+    supertest: ^6.1.6
+    tar: ^6.1.11
+    typescript: ^4.4.4
+    yargs: ^16.2.0
+  bin:
+    subql-node-terra: ./bin/run
+  languageName: unknown
+  linkType: soft
+
+"@subql/node@workspace:packages/node":
   version: 0.0.0-use.local
   resolution: "@subql/node-solana@workspace:packages/node-solana"
   dependencies:
@@ -4845,9 +4874,9 @@ __metadata:
     "@nestjs/schedule": ^1.0.2
     "@nestjs/schematics": ^8.0.5
     "@nestjs/testing": ^8.2.6
-    "@polkadot/api": 7.8.1
-    "@solana/web3.js": ^1.35.0
+    "@polkadot/api": 7.9.1
     "@subql/common": "workspace:*"
+    "@subql/common-substrate": "workspace:*"
     "@subql/types": "workspace:*"
     "@subql/x-merkle-mountain-range": 2.0.0-0.1.1
     "@subql/x-vm2": ^3.9.3-0.1.0
@@ -4856,7 +4885,6 @@ __metadata:
     "@types/jest": ^27.4.0
     "@types/lodash": ^4.14.178
     "@types/pino": ^6.3.12
-    "@types/sequelize": ^4.28.11
     "@types/supertest": ^2.0.11
     "@types/tar": ^6.1.1
     "@types/yargs": ^16.0.4
@@ -4864,6 +4892,7 @@ __metadata:
     app-module-path: ^2.2.0
     dayjs: ^1.10.7
     dotenv: ^15.0.1
+    eventemitter2: ^6.4.5
     lodash: ^4.17.21
     merkle-tools: ^1.4.1
     nodemon: ^2.0.15
@@ -5024,14 +5053,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@subql/types-solana@workspace:*, @subql/types-solana@workspace:packages/types-solana":
-  version: 0.0.0-use.local
-  resolution: "@subql/types-solana@workspace:packages/types-solana"
-  dependencies:
-    "@solana/web3.js": ^1.35.0
-    "@types/app-module-path": ^2.2.0
-  languageName: unknown
-  linkType: soft
 "@subql/types-terra@workspace:*, @subql/types-terra@workspace:packages/types-terra":
   version: 0.0.0-use.local
   resolution: "@subql/types-terra@workspace:packages/types-terra"
