@@ -13,7 +13,7 @@ type Transaction @entity {
 
   signature: String!
 
-  programId: [String!]
+  programId: [String]
 
-  status: String!
+  status: String
 }

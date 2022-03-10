@@ -70,6 +70,8 @@ export function filterTransaction(
   const filteredTransactions = transactions.filter(({ meta }: any) =>
     filtersArray.find(
       (filter) =>
+        (filter.programId || filter.status) &&
+        meta &&
         (filter.programId
           ? !!meta.logMessages.find((msg) =>
               msg.match(new RegExp(filter.programId)),
