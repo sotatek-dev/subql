@@ -5,13 +5,13 @@ type Block @entity {
 
 type Transaction @entity {
   id: ID! #id is a required field
-  blockHash: String!
+  blockHash: String
 
-  blockHeight: Int!
+  blockHeight: Int
 
-  slot: BigInt!
+  slot: BigInt
 
-  signature: String!
+  signature: String
 
   programId: [String]
 
