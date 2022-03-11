@@ -126,12 +126,12 @@ export default class Init extends Command {
     const solanaTemplate = {
       name: 'subql-solana-starter',
       description: 'Starter Solana project for subquery',
-      remote: 'https://github.com/sotatek-dev/subql-solana-starter',
-      branch: 'custom',
+      remote: 'https://github.com/sotatek-dev/subql-solana-starter.git',
+      branch: 'master',
       network: 'Solana',
-      specVersion: '0.2.0',
+      specVersion: '0.3.0',
     } as Template;
-    templates.splice(2);
+
     templates.push(solanaTemplate);
 
     if (!useCustomTemplate) {
