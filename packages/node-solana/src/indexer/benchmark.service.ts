@@ -71,7 +71,7 @@ export class BenchmarkService {
 
   @OnEvent(IndexerEvent.Started)
   handleStartedIndexer(blockPayload: TargetBlockPayload) {
-    if (!this.lastRegisteredHeight && !this.lastRegisteredTimestamp) {
+    if (!this.lastRegisteredHeight || !this.lastRegisteredTimestamp) {
       this.lastRegisteredHeight = blockPayload.height - 1;
       this.lastRegisteredTimestamp = Date.now();
     }
