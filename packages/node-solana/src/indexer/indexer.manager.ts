@@ -131,6 +131,7 @@ export class IndexerSolanaManager {
     }
     //TODO: implement POI
     logger.info(`startHeight ${startHeight}`);
+    this.eventEmitter.emit(IndexerEvent.Started, { height: startHeight });
     void this.fetchService.startLoop(startHeight).catch((err) => {
       logger.error(err, 'failed to fetch block');
       // FIXME: retry before exit

@@ -73,7 +73,8 @@ export function filterTransaction(
         (filter.programId || filter.status) &&
         meta &&
         (filter.programId
-          ? !!meta.logMessages.find((msg) =>
+          ? meta.logMessages &&
+            !!meta.logMessages.find((msg) =>
               msg.match(new RegExp(filter.programId)),
             )
           : true) &&
